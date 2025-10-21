@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2º Congreso Paraguayo de Estadística · Flipbook</title>
+<meta name="description" content="Segundo Congreso Paraguayo de Estadística · 23–25 de octubre de 2025 · FACEN-UNA, San Lorenzo, Paraguay">
+<meta name="color-scheme" content="light">
+<style>
+  :root{
+    --brand:#1a5276;
+    --brand-2:#2874a6;
+    --ink:#1b2631;
+    --muted:#5d6d7e;
+    --paper:#ffffff;
+    --bg:#f5f7fb;
+    --shadow:0 2px 10px rgba(0,0,0,.16);
+    --radius:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+  header{display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--brand);color:#fff}
+  header img{width:56px;height:56px;object-fit:contain;border-radius:8px;background:#fff}
+  header .t h1{font-size:clamp(18px,2.6vw,28px);font-weight:800;letter-spacing:.2px}
+  header .t p{opacity:.95;margin-top:2px;font-weight:500}
+  main{max-width:1100px;margin:18px auto;padding:0 16px}
+  .hero{background:var(--paper);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+  .hero .k{display:grid;grid-template-columns:repeat(2,auto);gap:8px 14px}
+  .hero .k div b{display:block;color:var(--muted);font-size:.88rem}
+  .book{position:relative;margin:12px auto;width:min(920px,100%);aspect-ratio:3/2;perspective:1800px}
+  .sheet{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.25,.1,.25,1)}
+  .paper{position:absolute;top:0;bottom:0;width:50%;background:var(--paper);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+  .left{left:0;border-radius:12px 0 0 12px}
+  .right{right:0;border-radius:0 12px 12px 0}
+  .page{position:absolute;inset:0;background:var(--paper);backface-visibility:hidden;display:block;overflow:auto}
+  .page>section{padding:22px 22px 26px 22px}
+  .page h2{font-size:clamp(18px,2.2vw,24px);color:var(--brand);margin-bottom:8px}
+  .page h3{font-size:clamp(15px,1.9vw,20px);color:var(--ink);margin:.6rem 0 .4rem}
+  .page p.lead{color:var(--muted);margin:.15rem 0 .7rem}
+  .back{transform:rotateY(180deg)}
+  .sheet.turn{transform:rotateY(-180deg)}
+  .controls{display:flex;justify-content:center;gap:10px;margin-top:14px}
+  button{background:var(--brand);color:#fff;border:none;border-radius:10px;padding:10px 16px;font-weight:700;cursor:pointer}
+  button:hover{background:var(--brand-2)}
+  button[disabled]{opacity:.4;cursor:not-allowed}
+  .indicator{text-align:center;margin-top:8px;color:var(--muted)}
+  .pill{display:inline-block;background:#eaf2f8;color:#0b3954;border:1px solid #d6eaf8;border-radius:999px;padding:2px 10px;font-size:.84rem;margin-right:6px}
+  .table{width:100%;border-collapse:collapse;margin-top:8px}
+  .table th,.table td{border:1px solid #e5e7eb;padding:8px;vertical-align:top}
+  .table th{background:#eef5fb;color:#0b3954;text-align:left}
+  .table tr:nth-child(even){background:#fafbfd}
+  .note{background:#f8fbff;border:1px solid #e3f2fd;border-radius:10px;padding:10px 12px;margin:8px 0;color:#0b3954}
+  .list{margin:6px 0 0 16px}
+  .list li{margin:.22rem 0}
+  .footer{margin-top:10px;color:var(--muted);font-size:.9rem}
+  @media (max-width:720px){
+    .book{aspect-ratio:2/3}
+    header img{width:48px;height:48px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <img id="logo" alt="Logo Congreso">
+  <div class="t">
+    <h1>2º Congreso Paraguayo de Estadística</h1>
+    <p>23–25 de octubre de 2025, FACEN-UNA, San Lorenzo, Paraguay</p>
+  </div>
+</header>
+
+<main>
+  <div class="hero" role="region" aria-label="Datos generales">
+    <div class="k">
+      <div><b>Sede</b>Salón Judith Dos Santos, FACEN-UNA</div>
+      <div><b>Modalidad</b>Presencial y virtual</div>
+      <div><b>Fechas</b>23, 24 y 25 de octubre de 2025</div>
+      <div><b>Ciudad</b>San Lorenzo, Paraguay</div>
+    </div>
+    <div class="pill">Programa oficial</div>
+  </div>
+
+  <!-- Flipbook -->
+  <div id="book" class="book" aria-live="polite" aria-label="Libro de programa"></div>
+  <div class="controls">
+    <button id="prevBtn">Anterior</button>
+    <button id="nextBtn">Siguiente</button>
+  </div>
+  <div id="indicator" class="indicator"></div>
+
+  <p class="footer">
+    Fuente del programa: PDF “AgendaFinalCongreso.pdf”. Se transcribió literalmente el cronograma, con división por días y sesiones. 
+  </p>
+</main>
+
+<script>
+/* ---------- Configuración de logo con fallback ---------- */
+const LOGO_PRIMARY = "https://i.postimg.cc/HjDx3zKf/564422774-17987218571905742-1830049154835463341-n.jpg";
+const LOGO_FALLBACK = "https://postimg.cc/0KnPyY9f";
+const logoEl = document.getElementById("logo");
+logoEl.src = LOGO_PRIMARY;
+logoEl.onerror = () => { logoEl.src = LOGO_FALLBACK; };
+
+/* ---------- Datos oficiales (transcripción del PDF) ---------- */
+/* Fuente: AgendaFinalCongreso.pdf */
+const meta = {
+  titulo: "2º Congreso Paraguayo de Estadística",
+  sede: "Salón Judith Dos Santos – FACEN-UNA",
+  ciudad: "San Lorenzo – Paraguay",
+  fechas: "23 al 25 de Octubre 2025"
+};
+
+const actividadesPrevias = [
+  {
+    fecha: "Lunes 20/10/2025 – 12:00",
+    tipo: "Conferencia virtual",
+    conferencista: "Eduardo Sáenz de Cabezón Irigaray",
+    titulo: "A nuestra imagen y semejanza. Un viaje al cerebro de la máquina."
+  },
+  {
+    fecha: "Martes 21/10/2025 – 19:00",
+    tipo: "Conferencia virtual",
+    conferencista: "Roberto Behar Gutiérrez",
+    titulo: "Desviación Estándar: Reina Incomprendida. Algunas Ideas para motivar su aprendizaje."
+  }
+];
+
+const programa = [
+  {
+    dia: "Jueves 23 de octubre de 2025 – Salón Judith Dos Santos (FACEN-UNA)",
+    sesiones: [
+      ["08:00–08:50","Acreditación y recepción","Hall Salón Judith Dos Santos"],
+      ["09:00–10:00","Acto de apertura oficial","Salón Judith Dos Santos"],
+      ["10:00–11:00","Conferencia magistral: Datos con propósito, inteligencia demográfica y herramientas estadísticas para decisiones transformadoras","Sabrina Juran"],
+      ["11:00–11:30","Coffee break","—"],
+      ["11:30–11:50","Ponencia: Producción científica sobre IA en la agricultura, descubrimiento de tópicos y análisis de tendencias mediante aprendizaje automático y visualización","Karime Montes Escobar"],
+      ["12:00–13:30","Almuerzo libre","—"],
+      ["13:30–13:50","Ponencia: Factores asociados a las producciones científicas de los investigadores categorizados del PRONII del área de Ciencias Sociales del Paraguay","Agustina Subeldía Coronel"],
+      ["14:00–14:20","Ponencia: Evolución de los principales indicadores de ciencia y tecnología del Paraguay (2019–2023)","Nathalie Elizabeth Alderete Troche"],
+      ["14:30–14:50","Ponencia: Predictores claves del abandono escolar en Paraguay, un análisis de datos masivos","Ricardo Daniel Escobar Torres"],
+      ["14:50–15:10","Coffee break","—"],
+      ["15:10–15:50","Primera Sesión de pósteres","—"],
+      ["16:00–16:20","Ponencia: Análisis factorial confirmatorio del DASS-21 en estudiantes universitarios paraguayos (cohortes 2020–2024)","Alexandra Vuyk"],
+      ["16:30–16:50","Ponencia: Un enfoque de descubrimiento de conocimiento en bases de datos (KDD) para mejorar la calidad educativa en la Universidad de Santander, un caso de estudio institucional","Miguel Oswaldo Pérez Pulido"],
+      ["17:00–17:30","El rol del Instituto Nacional de Estadística a nivel nacional y global","Iván Ojeda – Director Nacional del INE"],
+      ["17:40–18:00","Ponencia: Sinergia institucional y estadística aplicada, una experiencia basada en el ETML 2024–Paraguay","Natalia Torres"],
+      ["18:00","Cierre de la jornada","—"]
+    ]
+  },
+  {
+    dia: "Viernes 24 de octubre de 2025 – Salón Judith Dos Santos (FACEN-UNA)",
+    sesiones: [
+      ["08:00–08:50","Conferencia magistral, Un recorrido por la aplicación de técnicas de machine learning en el campo de la educación","Adolfo Hernández Estrada"],
+      ["09:00–09:20","Ponencia, Machine learning aplicado a la reducción de la deserción universitaria","Jean Pierre Uribe Mostacero"],
+      ["09:20–09:40","Ponencia, Aplicación de pruebas no paramétricas en el análisis de metodologías lúdicas en la enseñanza de lógica formal","Deysi Johanna Pérez Lesmo"],
+      ["09:40–10:00","Coffee break","—"],
+      ["10:00–10:30","Ponencia, La estadística como ciencia matemática, puentes para el desarrollo científico en Paraguay","Jorge Daniel Mello Román"],
+      ["10:30–10:50","Ponencia, Correlación entrópica para n variables aleatorias cualitativas","Santiago Gómez Guerrero"],
+      ["10:50–11:10","Ponencia, Regresión binomial bayesiana robusta y asimétrica con un nuevo enlace t de dos piezas","Omar Chocotea Poca"],
+      ["11:10–11:30","Ponencia, Errores recurrentes en torno al tamaño muestral y propuestas para evitarlos","Félix Alberto Ávalos Espínola"],
+      ["11:30–11:50","Ponencia, Marco maestro de muestreo para las encuestas de hogares","Gladys Margarita Ocampos Ibarra"],
+      ["12:00–13:30","Almuerzo libre","—"],
+      ["13:30–14:20","Conferencia magistral, Tendencias y desafíos de la aplicación de aprendizaje automático en el mundo real","Miguel García Torres"],
+      ["14:30–14:50","Ponencia, Apoyo al diagnóstico de la enfermedad de Alzheimer mediante señales de electroencefalografía por Support Vector Machine","Britman Salcedo Pumaccola"],
+      ["15:00–15:20","Ponencia, Insuficiencia renal crónica por fórmula MDRD-4, prevalencia y factores de riesgo asociados en Villarrica, Paraguay","Sandra Lorena Vázquez Roa"],
+      ["15:30–15:50","Ponencia, Análisis no paramétrico de índices acústicos en gradientes de cobertura vegetal y fase lunar","Jhon F. Mongelos"],
+      ["15:50–16:10","Coffee break","—"],
+      ["16:10–16:30","Ponencia, Monitoreo diario de precios en supermercados, un enfoque de ciencia de datos para extracción robusta, estandarización de unidades, comparabilidad de precios y tablero operativo","Mauricio Jesús Ortega Estigarribia"],
+      ["16:30–16:50","Ponencia, Aplicación de técnicas multivariadas para la clasificación y análisis de arcillas comerciales mediante métodos de caracterización","Lucas Damián Gómez Caballero"],
+      ["16:50–17:10","Ponencia, Modelo markoviano para la evolución de aportes de los asegurados del Instituto de Previsión Social","Edgar López Pezoa"],
+      ["17:10–17:30","Ponencia, Actualización del Directorio General de Empresas y Establecimientos y su aporte a las estadísticas económicas","Rafael Aquino Palma"],
+      ["17:30–17:50","Ponencia, Estimaciones y proyecciones de la población paraguaya por sexo y edad, 1950–2050 (Revisión 2024)","Milciades Brítez Díaz"],
+      ["18:00","Cierre de la jornada","—"]
+    ]
+  },
+  {
+    dia: "Sábado 25 de octubre de 2025 – Salón Judith Dos Santos (FACEN-UNA)",
+    sesiones: [
+      ["08:30–09:20","Conferencia magistral, Edición científica: el desafío de la revisión de pares ante la IA generativa. Una sucinta mirada desde la estadística bayesiana","Miguel Zapata Ros"],
+      ["09:30–11:30","Segunda Sesión de pósteres","—"],
+      ["12:00–18:00","Ceremonia de clausura, almuerzo de camaradería, show musical y entrega de certificados","Salón Judith Dos Santos"]
+    ]
+  }
+];
+
+/* ---------- Plantillas ---------- */
+const md = {
+  portada: () => `
+    <section aria-label="Portada">
+      <h2>${meta.titulo}</h2>
+      <p class="lead">${meta.fechas}</p>
+      <div class="note"><b>Sede:</b> ${meta.sede}. <b>Ciudad:</b> ${meta.ciudad}.</div>
+      <h3>Actividades previas</h3>
+      <ul class="list">
+        ${actividadesPrevias.map(x => `<li><b>${x.fecha}</b> — ${x.tipo}. <i>${x.conferencista}</i>. “${x.titulo}”.</li>`).join("")}
+      </ul>
+    </section>
+  `,
+  paginaPrograma: (bloque) => `
+    <section aria-label="${bloque.dia}">
+      <h2>${bloque.dia}</h2>
+      <table class="table" role="table">
+        <thead><tr><th style="width:140px">Hora</th><th>Actividad</th><th style="width:260px">Responsable / Lugar</th></tr></thead>
+        <tbody>
+          ${bloque.sesiones.map(r => `
+            <tr>
+              <td>${r[0]}</td>
+              <td>${r[1]}</td>
+              <td>${r[2] || "—"}</td>
+            </tr>`).join("")}
+        </tbody>
+      </table>
+    </section>
+  `,
+  cierre: () => `
+    <section aria-label="Información">
+      <h2>Información y contacto</h2>
+      <p class="lead">Organiza: Laboratorio de Investigación Estadística Teórica y Aplicada, Colegio y Asociación de Estadísticos del Paraguay, y el Departamento de Estadística y Educación a Distancia de la FACEN.</p>
+      <div class="note">Para consultas: <b>lieta@facenuna.edu.py</b> · <b>+595 981 951 043</b></div>
+      <p class="footer">Este flipbook es estático y puede publicarse directamente en GitHub Pages.</p>
+    </section>
+  `
+};
+
+/* ---------- Generación del flipbook ---------- */
+const book = document.getElementById("book");
+const sheets = []; // cada hoja física
+const pagesHTML = [
+  md.portada(),
+  ...programa.map(md.paginaPrograma),
+  md.cierre()
+];
+
+// construir n hojas = n páginas (una cara visible + dorso en blanco para el giro)
+for (let i = 0; i < pagesHTML.length; i++){
+  const s = document.createElement("div");
+  s.className = "sheet";
+  s.style.zIndex = (pagesHTML.length - i).toString();
+
+  const left = document.createElement("div");
+  left.className = "paper left";
+  const right = document.createElement("div");
+  right.className = "paper right";
+
+  const front = document.createElement("div");
+  front.className = "page front";
+  front.innerHTML = pagesHTML[i];
+
+  const back = document.createElement("div");
+  back.className = "page back";
+  back.innerHTML = `<section aria-label="Dorso ${i+1}"></section>`;
+
+  left.appendChild(front);
+  right.appendChild(back);
+  s.appendChild(left);
+  s.appendChild(right);
+
+  book.appendChild(s);
+  sheets.push(s);
+}
+
+/* ---------- Navegación ---------- */
+let pageIndex = 0;
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const indicator = document.getElementById("indicator");
+
+function update(){
+  for (let i=0;i<sheets.length;i++){
+    if (i < pageIndex) sheets[i].classList.add("turn");
+    else sheets[i].classList.remove("turn");
+  }
+  prevBtn.disabled = pageIndex === 0;
+  nextBtn.disabled = pageIndex === sheets.length;
+  indicator.textContent = `Página ${Math.min(pageIndex+1, sheets.length)} de ${sheets.length}`;
+}
+prevBtn.addEventListener("click", ()=>{ if(pageIndex>0){ pageIndex--; update(); }});
+nextBtn.addEventListener("click", ()=>{ if(pageIndex<sheets.length){ pageIndex++; update(); }});
+document.addEventListener("keydown", e=>{
+  if (e.key==="ArrowLeft" && pageIndex>0){ pageIndex--; update(); }
+  if (e.key==="ArrowRight" && pageIndex<sheets.length){ pageIndex++; update(); }
+});
+let startX=0;
+document.addEventListener("touchstart", e=>{ startX = e.changedTouches[0].screenX; });
+document.addEventListener("touchend", e=>{
+  const dx = e.changedTouches[0].screenX - startX;
+  if (dx < -40 && pageIndex<sheets.length){ pageIndex++; update(); }
+  if (dx >  40 && pageIndex>0){ pageIndex--; update(); }
+});
+
+update();
+</script>
+</body>
+</html>
