@@ -1,165 +1,1016 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>2º Congreso Paraguayo de Estadística · Flipbook</title>
-<meta name="description" content="Programa oficial del 2º Congreso Paraguayo de Estadística (23–25 octubre 2025, FACEN-UNA).">
-<style>
-  :root{
-    --brand:#1a5276;
-    --brand-2:#2874a6;
-    --ink:#1b2631;
-    --muted:#5d6d7e;
-    --bg:#f5f7fb;
-    --paper:#ffffff;
-    --shadow:0 2px 10px rgba(0,0,0,.16);
-    --radius:12px;
-    --logo-url: url("https://i.postimg.cc/HjDx3zKf/564422774-17987218571905742-1830049154835463341-n.jpg");
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{
-    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
-    background:var(--bg); color:var(--ink); line-height:1.45;
-  }
-  /* Marca de agua global con el logo de fondo */
-  body::before{
-    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background-image: var(--logo-url);
-    background-repeat:no-repeat; background-position:center; background-size:min(60vmin,520px);
-    opacity:.06; filter:grayscale(30%);
-  }
-  header{
-    display:flex; align-items:center; gap:16px;
-    padding:16px 18px; background:var(--brand); color:#fff; position:sticky; top:0; z-index:10;
-  }
-  header img{
-    width:56px; height:56px; object-fit:contain; background:#fff; border-radius:8px;
-    box-shadow:0 0 0 2px rgba(255,255,255,.6);
-  }
-  header .t h1{font-size:clamp(18px,2.6vw,28px);font-weight:800;letter-spacing:.2px}
-  header .t p{opacity:.95;margin-top:2px;font-weight:500}
-  main{max-width:1400px; margin:18px auto; padding:0 16px}
-  .layout{display:flex; gap:18px; align-items:flex-start}
-  .viewer{
-    flex:1 1 70%; min-width:300px;
-    border:none; border-radius:12px; background:var(--paper); box-shadow:var(--shadow);
-    height:80vh; /* 80% alto visible; en móvil se ajusta */
-  }
-  .aside{
-    flex:0 0 30%; min-width:260px;
-    position:sticky; top:90px;
-    background:var(--paper); border-radius:12px; box-shadow:var(--shadow);
-    padding:16px 18px;
-  }
-  .aside h2{font-size:clamp(18px,2vw,22px); color:var(--brand); margin-bottom:8px}
-  .aside p{color:var(--muted); margin:.4rem 0}
-  .note{background:#f8fbff;border:1px solid #e3f2fd;border-radius:10px;padding:10px 12px;margin:8px 0;color:#0b3954}
-  .fallback{
-    display:none; /* visible solo si falla FlowPaper */
-    width:100%; height:80vh; border:none; border-radius:12px; box-shadow:var(--shadow);
-  }
-  .dl{margin-top:8px; display:inline-block; background:var(--brand); color:#fff; text-decoration:none;
-      padding:8px 12px; border-radius:8px; font-weight:700}
-  @media (max-width: 980px){
-    .layout{flex-direction:column}
-    .viewer, .fallback{height:72vh}
-    .aside{position:static; width:100%}
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - Congreso Paraguayo de Estadística</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: 
+                linear-gradient(rgba(26, 42, 87, 0.85), rgba(26, 42, 87, 0.9)),
+                url('https://i.postimg.cc/0KnPyY9f/logo.png') center/cover no-repeat fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            height: 80px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            transition: transform 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #fff, #a8d8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+
+        .header .date {
+            font-size: 1.4rem;
+            color: #a8d8ff;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        .book-container {
+            width: 95%;
+            max-width: 1000px;
+            height: 600px;
+            position: relative;
+            perspective: 2000px;
+            margin-bottom: 30px;
+            z-index: 1;
+        }
+
+        .book {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+            cursor: grab;
+            border-radius: 8px 15px 15px 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .page-front, .page-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .page-front {
+            background: #f8f9fa;
+            z-index: 2;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .page-back {
+            background: #f0f2f5;
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+
+        .page.flipped {
+            transform: rotateY(-180deg);
+            z-index: 10;
+        }
+
+        .page.dragging {
+            transition: none;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 14px;
+            color: #777;
+            font-style: italic;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2c3e6e;
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            color: #2c3e6e;
+            font-weight: 700;
+        }
+
+        .page-date {
+            font-size: 1.2rem;
+            color: #1a2a57;
+            background: #e0e9ff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .schedule-table th {
+            background: #2c3e6e;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .schedule-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .schedule-table tr:nth-child(even) {
+            background: #f0f4ff;
+        }
+
+        .schedule-table tr:hover {
+            background: #e0e9ff;
+        }
+
+        .time-col {
+            width: 120px;
+            font-weight: 600;
+            color: #1a2a57;
+        }
+
+        .activity-col {
+            width: auto;
+        }
+
+        .speaker-col {
+            width: 200px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            z-index: 1;
+        }
+
+        button {
+            background: linear-gradient(135deg, #2c3e6e 0%, #1a2a57 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #3a4f8c 0%, #2c3e6e 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: #a0a0a0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            text-align: center;
+            color: #e0e0e0;
+            font-size: 1rem;
+            max-width: 600px;
+            line-height: 1.5;
+            z-index: 1;
+        }
+
+        .logo-small {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: #2c3e6e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-small i {
+            font-size: 28px;
+        }
+
+        .cover {
+            background: linear-gradient(135deg, #1a2a57 0%, #2c3e6e 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .cover h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .cover .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #a8d8ff;
+        }
+
+        .cover .date {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 25px;
+            border-radius: 30px;
+        }
+
+        .cover .location {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #e0e0e0;
+        }
+
+        .stats-icon {
+            font-size: 60px;
+            margin-bottom: 30px;
+            color: #a8d8ff;
+        }
+
+        .drag-indicator {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(42, 67, 101, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: white;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            z-index: 5;
+        }
+
+        .page:hover .drag-indicator {
+            opacity: 1;
+        }
+
+        .keynote {
+            background: #e8f4ff !important;
+            border-left: 4px solid #2c3e6e;
+        }
+
+        .break {
+            background: #fff8e8 !important;
+            border-left: 4px solid #ffb347;
+        }
+
+        .poster {
+            background: #f0ffe8 !important;
+            border-left: 4px solid #4caf50;
+        }
+
+        .special {
+            background: #f8e8ff !important;
+            border-left: 4px solid #9c27b0;
+        }
+
+        @media (max-width: 768px) {
+            .book-container {
+                height: 500px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .page-title {
+                font-size: 1.4rem;
+            }
+            
+            .schedule-table {
+                font-size: 0.85rem;
+            }
+            
+            .time-col {
+                width: 90px;
+            }
+            
+            .speaker-col {
+                width: 150px;
+            }
+            
+            .logo {
+                height: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <img id="logo" alt="Logo Congreso">
-    <div class="t">
-      <h1>2º Congreso Paraguayo de Estadística</h1>
-      <p>23–25 de octubre de 2025, FACEN-UNA, San Lorenzo, Paraguay</p>
-    </div>
-  </header>
-
-  <main>
-    <div class="layout">
-      <!-- Visor principal vía FlowPaper Flipbook (iframe) -->
-      <iframe id="flipbookFrame" class="viewer" title="Flipbook del Programa" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-      <!-- Lateral informativo -->
-      <aside class="aside" aria-label="Información">
-        <h2>Programa oficial</h2>
-        <p>Visualizador tipo flipbook, sin dependencias locales. Para reemplazar el PDF basta con subir un archivo nuevo llamado <b>AgendaFinalCongreso.pdf</b> a la raíz del repositorio.</p>
-        <div class="note">
-          Si el visor externo no carga por políticas de contenido, se activará automáticamente un <b>fallback</b> con el visor PDF nativo del navegador.
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="https://i.postimg.cc/0KnPyY9f/logo.png" alt="Logo Congreso Paraguayo de Estadística" class="logo">
+            </div>
+            <h1>Congreso Paraguayo de Estadística</h1>
+            <div class="subtitle">Programa General</div>
+            <div class="date">23 al 25 de Octubre 2025</div>
+            <p>Explora la agenda del congreso con este libro interactivo. Arrastra las páginas para navegar o usa los botones de control.</p>
         </div>
-        <p><b>Contacto</b> · lieta@facenuna.edu.py · +595 981 951 043</p>
-      </aside>
     </div>
 
-    <!-- Fallback de navegador -->
-    <object id="fallbackPdf" class="fallback" type="application/pdf" aria-label="Visor PDF alternativo"></object>
-    <p id="fallbackLink" style="display:none">
-      <a class="dl" href="AgendaFinalCongreso.pdf" download>Descargar PDF</a>
-    </p>
-  </main>
+    <div class="book-container">
+        <div class="book" id="book">
+            <!-- Página 0: Portada -->
+            <div class="page cover" id="page-0">
+                <div class="page-front">
+                    <i class="fas fa-chart-line stats-icon"></i>
+                    <h1>Congreso Paraguayo de Estadística</h1>
+                    <div class="subtitle">Programa General</div>
+                    <div class="date">23 al 25 de Octubre 2025</div>
+                    <div class="location">Facultad de Ciencias Exactas y Naturales - UNA<br>San Lorenzo - Paraguay</div>
+                    <div class="page-number">Agenda Digital</div>
+                    <div class="drag-indicator">⇦</div>
+                </div>
+                <div class="page-back" style="display: none;"></div>
+            </div>
+            
+            <!-- Página 1: Actividades Previas -->
+            <div class="page" id="page-1">
+                <div class="page-front">
+                    <div class="logo-small">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>CONGRESO</span>
+                    </div>
+                    <div class="page-header">
+                        <div class="page-title">Actividades Previas</div>
+                        <div class="page-date">20-21 Octubre</div>
+                    </div>
+                    
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Actividad</th>
+                                <th>Conferencista</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="keynote">
+                                <td>Lunes 20</td>
+                                <td class="time-col">12:00 hs</td>
+                                <td class="activity-col">Conferencia virtual: A nuestra imagen y semejanza. Un viaje al cerebro de la máquina.</td>
+                                <td class="speaker-col">Eduardo Sáenz de Cabezón Irigaray</td>
+                            </tr>
+                            <tr class="keynote">
+                                <td>Martes 21</td>
+                                <td class="time-col">19:00 hs</td>
+                                <td class="activity-col">Conferencia virtual: Desviación Estándar: Reina Incomprendida. Algunas Ideas para motivar su aprendizaje.</td>
+                                <td class="speaker-col">Roberto Behar Gutiérrez</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="page-number">Página 1</div>
+                    <div class="drag-indicator">⇦</div>
+                </div>
+                <div class="page-back">
+                    <div class="logo-small">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>CONGRESO</span>
+                    </div>
+                    <div class="page-header">
+                        <div class="page-title">Jueves 23 de Octubre</div>
+                        <div class="page-date">Primera Parte</div>
+                    </div>
+                    
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Actividad</th>
+                                <th>Responsable / Lugar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-col">08:00–08:50</td>
+                                <td class="activity-col">Acreditación y recepción</td>
+                                <td class="speaker-col">Hall Salón Judith Dos Santos</td>
+                            </tr>
+                            <tr class="special">
+                                <td class="time-col">09:00–10:00</td>
+                                <td class="activity-col">Acto de apertura oficial</td>
+                                <td class="speaker-col">Salón Judith Dos Santos</td>
+                            </tr>
+                            <tr class="keynote">
+                                <td class="time-col">10:00–11:00</td>
+                                <td class="activity-col">Conferencia magistral: Datos con propósito: inteligencia demográfica y herramientas estadísticas para decisiones transformadoras</td>
+                                <td class="speaker-col">Sabrina Juran</td>
+                            </tr>
+                            <tr class="break">
+                                <td class="time-col">11:00–11:30</td>
+                                <td class="activity-col">Coffee break</td>
+                                <td class="speaker-col">—</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">11:30–11:50</td>
+                                <td class="activity-col">Ponencia: Producción científica sobre IA en la agricultura: descubrimiento de tópicos y análisis de tendencias mediante aprendizaje automático y visualización</td>
+                                <td class="speaker-col">Karime Montes Escobar</td>
+                            </tr>
+                            <tr class="break">
+                                <td class="time-col">12:00–13:30</td>
+                                <td class="activity-col">Almuerzo libre</td>
+                                <td class="speaker-col">—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="page-number">Página 2</div>
+                </div>
+            </div>
+            
+            <!-- Página 2: Jueves 23 (Continuación) -->
+            <div class="page" id="page-2">
+                <div class="page-front">
+                    <div class="logo-small">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>CONGRESO</span>
+                    </div>
+                    <div class="page-header">
+                        <div class="page-title">Jueves 23 de Octubre</div>
+                        <div class="page-date">Segunda Parte</div>
+                    </div>
+                    
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Actividad</th>
+                                <th>Responsable / Lugar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-col">13:30–13:50</td>
+                                <td class="activity-col">Ponencia: Factores asociados a las producciones científicas (PC) de los investigadores categorizados del PRONII del área de Ciencias Sociales del Paraguay (CSPy)</td>
+                                <td class="speaker-col">Agustina Subeldía Coronel</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">14:00–14:20</td>
+                                <td class="activity-col">Ponencia: Evolución de los principales indicadores de ciencia y tecnología del Paraguay (2019–2023)</td>
+                                <td class="speaker-col">Nathalie Elizabeth Alderete Troche</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">14:30–14:50</td>
+                                <td class="activity-col">Ponencia: Predictores claves del abandono Escobar en Paraguay: un análisis de datos masivos</td>
+                                <td class="speaker-col">Ricardo Daniel Escobar Torres</td>
+                            </tr>
+                            <tr class="break">
+                                <td class="time-col">14:50–15:10</td>
+                                <td class="activity-col">Coffee break</td>
+                                <td class="speaker-col">—</td>
+                            </tr>
+                            <tr class="poster">
+                                <td class="time-col">15:10–15:50</td>
+                                <td class="activity-col">Primera Sesión de pósteres</td>
+                                <td class="speaker-col">—</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">16:00–16:20</td>
+                                <td class="activity-col">Ponencia: Análisis factorial confirmatorio del DASS-21 en estudiantes universitarios paraguayos (cohortes 2020–2024)</td>
+                                <td class="speaker-col">Alexandra Vuyk</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="page-number">Página 3</div>
+                    <div class="drag-indicator">⇦</div>
+                </div>
+                <div class="page-back">
+                    <div class="logo-small">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>CONGRESO</span>
+                    </div>
+                    <div class="page-header">
+                        <div class="page-title">Jueves 23 de Octubre</div>
+                        <div class="page-date">Tercera Parte</div>
+                    </div>
+                    
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Actividad</th>
+                                <th>Responsable / Lugar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-col">16:30–16:50</td>
+                                <td class="activity-col">Ponencia: Un enfoque de descubrimiento de conocimiento en bases de datos (KDD) para mejorar la calidad educativa en la Universidad de Santander (UDES): un caso de estudio institucional</td>
+                                <td class="speaker-col">Miguel Oswaldo Pérez Pulido</td>
+                            </tr>
+                            <tr class="special">
+                                <td class="time-col">17:00–17:30</td>
+                                <td class="activity-col">El rol del Instituto Nacional de Estadística a nivel nacional y global</td>
+                                <td class="speaker-col">Iván Ojeda – Director Nacional del INE</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">17:40–18:00</td>
+                                <td class="activity-col">Ponencia: Sinergia institucional y estadística aplicada: una experiencia basada en el ETML 2024–Paraguay</td>
+                                <td class="speaker-col">Natalia Torres</td>
+                            </tr>
+                            <tr class="special">
+                                <td class="time-col">18:00</td>
+                                <td class="activity-col">Cierre de la jornada</td>
+                                <td class="speaker-col">—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="page-number">Página 4</div>
+                </div>
+            </div>
+            
+            <!-- Página 3: Viernes 24 -->
+            <div class="page" id="page-3">
+                <div class="page-front">
+                    <div class="logo-small">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>CONGRESO</span>
+                    </div>
+                    <div class="page-header">
+                        <div class="page-title">Viernes 24 de Octubre</div>
+                        <div class="page-date">Primera Parte</div>
+                    </div>
+                    
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Actividad</th>
+                                <th>Responsable / Lugar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="keynote">
+                                <td class="time-col">08:00–08:50</td>
+                                <td class="activity-col">Conferencia magistral: Un recorrido por la aplicación de técnicas de machine learning en el campo de la educación</td>
+                                <td class="speaker-col">Adolfo Hernández Estrada</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">09:00–09:20</td>
+                                <td class="activity-col">Ponencia: Machine learning aplicado a la reducción de la deserción universitaria</td>
+                                <td class="speaker-col">Jean Pierre Uribe Mostacero</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">09:20–09:40</td>
+                                <td class="activity-col">Ponencia: Aplicación de pruebas no paramétricas en el análisis de metodologías lúdicas en la enseñanza de lógica formal</td>
+                                <td class="speaker-col">Deysi Johanna Pérez Lesmo</td>
+                            </tr>
+                            <tr class="break">
+                                <td class="time-col">09:40–10:00</td>
+                                <td class="activity-col">Coffee break</td>
+                                <td class="speaker-col">—</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">10:00–10:30</td>
+                                <td class="activity-col">Ponencia: La estadística como ciencia matemática: puentes para el desarrollo científico en Paraguay</td>
+                                <td class="speaker-col">Jorge Daniel Mello Román</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">10:30–10:50</td>
+                                <td class="activity-col">Ponencia: Correlación entrópica para n variables aleatorias cualitativas</td>
+                                <td class="speaker-col">Santiago Gómez Guerrero</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="page-number">Página 5</div>
+                    <div class="drag-indicator">⇦</div>
+                </div>
+                <div class="page-back">
+                    <div class="logo-small">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>CONGRESO</span>
+                    </div>
+                    <div class="page-header">
+                        <div class="page-title">Viernes 24 de Octubre</div>
+                        <div class="page-date">Segunda Parte</div>
+                    </div>
+                    
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Actividad</th>
+                                <th>Responsable / Lugar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-col">10:50–11:10</td>
+                                <td class="activity-col">Ponencia: Regresión binomial bayesiana robusta y asimétrica con un nuevo enlace t de dos piezas</td>
+                                <td class="speaker-col">Omar Chocotea Poca</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">11:10–11:30</td>
+                                <td class="activity-col">Ponencia: Errores recurrentes en torno al tamaño muestral y propuestas para evitarlos</td>
+                                <td class="speaker-col">Félix Alberto Ávalos Espínola</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">11:30–11:50</td>
+                                <td class="activity-col">Ponencia: Marco maestro de muestreo para las encuestas de hogares</td>
+                                <td class="speaker-col">Gladys Margarita Ocampos Ibarra</td>
+                            </tr>
+                            <tr class="break">
+                                <td class="time-col">12:00–13:30</td>
+                                <td class="activity-col">Almuerzo libre</td>
+                                <td class="speaker-col">—</td>
+                            </tr>
+                            <tr class="keynote">
+                                <td class="time-col">13:30–14:20</td>
+                                <td class="activity-col">Conferencia magistral: Tendencias y desafíos de la aplicación de aprendizaje automático en el mundo real</td>
+                                <td class="speaker-col">Miguel García Torres</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="page-number">Página 6</div>
+                </div>
+            </div>
+            
+            <!-- Página 4: Viernes 24 (Cont.) y Sábado 25 -->
+            <div class="page" id="page-4">
+                <div class="page-front">
+                    <div class="logo-small">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>CONGRESO</span>
+                    </div>
+                    <div class="page-header">
+                        <div class="page-title">Viernes 24 de Octubre</div>
+                        <div class="page-date">Tercera Parte</div>
+                    </div>
+                    
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Actividad</th>
+                                <th>Responsable / Lugar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-col">14:30–14:50</td>
+                                <td class="activity-col">Ponencia: Apoyo al diagnóstico de la enfermedad de Alzheimer mediante señales de electroencefalografía por Support Vector Machine (SVM)</td>
+                                <td class="speaker-col">Britman Salcedo Pumaccola</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">15:00–15:20</td>
+                                <td class="activity-col">Ponencia: Insuficiencia renal crónica por fórmula MDRD-4: prevalencia y factores de riesgo asociados en Villarrica, Paraguay</td>
+                                <td class="speaker-col">Sandra Lorena Vázquez Roa</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">15:30–15:50</td>
+                                <td class="activity-col">Ponencia: Análisis no paramétrico de índices acústicos en gradientes de cobertura vegetal y fase lunar</td>
+                                <td class="speaker-col">Jhon F. Mongelos</td>
+                            </tr>
+                            <tr class="break">
+                                <td class="time-col">15:50–16:10</td>
+                                <td class="activity-col">Coffee break</td>
+                                <td class="speaker-col">—</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">16:10–16:30</td>
+                                <td class="activity-col">Ponencia: Monitoreo diario de precios en supermercados (Paraguay): un enfoque de ciencia de datos para extracción robusta, estandarización de unidades, comparabilidad de precios y tablero operativo</td>
+                                <td class="speaker-col">Mauricio Jesús Ortega Estigarribia</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="page-number">Página 7</div>
+                    <div class="drag-indicator">⇦</div>
+                </div>
+                <div class="page-back">
+                    <div class="logo-small">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>CONGRESO</span>
+                    </div>
+                    <div class="page-header">
+                        <div class="page-title">Sábado 25 de Octubre</div>
+                        <div class="page-date">Última Jornada</div>
+                    </div>
+                    
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Actividad</th>
+                                <th>Responsable / Lugar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="keynote">
+                                <td class="time-col">08:30–09:20</td>
+                                <td class="activity-col">Conferencia magistral: Edición científica: el desafío de la revisión de pares ante la IA generativa. Una sucinta mirada desde la estadística bayesiana</td>
+                                <td class="speaker-col">Miguel Zapata Ros</td>
+                            </tr>
+                            <tr class="poster">
+                                <td class="time-col">09:30–11:30</td>
+                                <td class="activity-col">Segunda Sesión de pósteres</td>
+                                <td class="speaker-col">Salón Judith Dos Santos</td>
+                            </tr>
+                            <tr class="special">
+                                <td class="time-col">12:00–18:00</td>
+                                <td class="activity-col">Ceremonia de clausura: almuerzo de camaradería, show musical y entrega de certificados</td>
+                                <td class="speaker-col">Salón Judith Dos Santos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="page-number">Página 8</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<script>
-/* Logo y fallback */
-const LOGO_PRIMARY = "https://i.postimg.cc/HjDx3zKf/564422774-17987218571905742-1830049154835463341-n.jpg";
-const LOGO_FALLBACK = "https://postimg.cc/0KnPyY9f";
-const logoEl = document.getElementById("logo");
-logoEl.src = LOGO_PRIMARY;
-logoEl.onerror = () => {
-  logoEl.src = LOGO_FALLBACK;
-  document.documentElement.style.setProperty("--logo-url", `url("${LOGO_FALLBACK}")`);
-};
+    <div class="controls">
+        <button id="prev-btn" disabled>
+            <i class="fas fa-arrow-left"></i> Anterior
+        </button>
+        <button id="next-btn">
+            Siguiente <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
 
-/* Construcción robusta de la URL absoluta del PDF en GitHub Pages */
-const pdfURL = new URL("AgendaFinalCongreso.pdf", window.location.href).href;
+    <div class="instructions">
+        <p>Arrastra la esquina superior derecha de cualquier página con el dedo (en móvil) o con el ratón (en desktop) para voltear la página</p>
+    </div>
 
-/* FlowPaper requiere HTTPS en producción para evitar “mixed content” */
-const flowpaperURL = "https://flowpaper.com/flipbook/" + encodeURI(pdfURL);
-
-/* Montaje del iframe */
-const flip = document.getElementById("flipbookFrame");
-const fallbackObj = document.getElementById("fallbackPdf");
-const fallbackLink = document.getElementById("fallbackLink");
-
-/* Carga con control de errores y timeouts */
-let fallbackArmed = false;
-function activateFallback(){
-  if (fallbackArmed) return;
-  fallbackArmed = true;
-  flip.style.display = "none";
-  fallbackObj.style.display = "block";
-  fallbackObj.setAttribute("data", pdfURL);
-  fallbackObj.setAttribute("data-src", pdfURL); // compatibilidad
-  fallbackObj.setAttribute("aria-busy", "false");
-  fallbackLink.style.display = "block";
-}
-
-/* Intento principal: FlowPaper */
-flip.src = flowpaperURL;
-
-/* Estrategia de fallback:
-   - onerror del iframe
-   - timeout si el visor externo no responde
-   - detección de bloqueo por CSP/embed */
-flip.addEventListener("error", activateFallback);
-const watchdog = setTimeout(activateFallback, 6000); // 6s
-
-/* Si el iframe carga, desarma el fallback */
-flip.addEventListener("load", () => {
-  clearTimeout(watchdog);
-  // detección simple de bloqueo (algunos navegadores disparan load aunque bloqueen contenido)
-  try {
-    const sameOrigin = flip.contentWindow && flip.contentDocument;
-    // Si no hay acceso al documento por CORS está bien; dejamos Flipbook activo.
-  } catch(e) {
-    // No acceder por CORS. Mantener Flipbook.
-  }
-});
-
-/* Acceso directo: si el usuario entra con hash #pdf se fuerza el fallback nativo */
-if (location.hash === "#pdf") activateFallback();
-</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pages = document.querySelectorAll('.page');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            let currentPage = 0;
+            const totalPages = pages.length;
+            let isDragging = false;
+            let startX = 0;
+            let startY = 0;
+            let currentX = 0;
+            
+            // Inicializar estado de las páginas
+            updatePageStates();
+            
+            // Agregar event listeners para arrastre
+            pages.forEach(page => {
+                // Eventos de mouse
+                page.addEventListener('mousedown', startDrag);
+                page.addEventListener('mousemove', drag);
+                page.addEventListener('mouseup', endDrag);
+                page.addEventListener('mouseleave', endDrag);
+                
+                // Eventos táctiles
+                page.addEventListener('touchstart', startDrag);
+                page.addEventListener('touchmove', drag);
+                page.addEventListener('touchend', endDrag);
+            });
+            
+            // Eventos para los botones
+            prevBtn.addEventListener('click', goToPrevPage);
+            nextBtn.addEventListener('click', goToNextPage);
+            
+            function startDrag(e) {
+                // Solo permitir arrastrar desde la parte derecha de la página
+                const rect = e.currentTarget.getBoundingClientRect();
+                const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+                
+                // Verificar si el arrastre comienza en el área derecha de la página
+                if (clientX > rect.left + rect.width * 0.7 && 
+                    clientY > rect.top + rect.height * 0.2 && 
+                    clientY < rect.top + rect.height * 0.8) {
+                    
+                    isDragging = true;
+                    startX = clientX;
+                    startY = clientY;
+                    currentX = clientX;
+                    
+                    e.currentTarget.classList.add('dragging');
+                    
+                    // Prevenir comportamiento por defecto para evitar seleccionar texto
+                    e.preventDefault();
+                }
+            }
+            
+            function drag(e) {
+                if (!isDragging) return;
+                
+                const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                const deltaX = clientX - startX;
+                
+                // Solo procesar arrastres horizontales significativos
+                if (Math.abs(deltaX) > 10) {
+                    const page = e.currentTarget;
+                    const maxRotation = 180;
+                    const rotation = Math.min(maxRotation, Math.max(0, -deltaX * 0.5));
+                    
+                    page.style.transform = `rotateY(${-rotation}deg)`;
+                    currentX = clientX;
+                }
+                
+                e.preventDefault();
+            }
+            
+            function endDrag(e) {
+                if (!isDragging) return;
+                
+                isDragging = false;
+                const page = e.currentTarget;
+                page.classList.remove('dragging');
+                
+                const clientX = e.type.includes('touch') ? 
+                    (e.changedTouches[0] ? e.changedTouches[0].clientX : currentX) : e.clientX;
+                const deltaX = clientX - startX;
+                
+                // Si el arrastre fue significativo, voltear la página
+                if (deltaX < -50) {
+                    page.classList.add('flipped');
+                    setTimeout(() => {
+                        currentPage++;
+                        updatePageStates();
+                        page.style.transform = '';
+                    }, 500);
+                } else {
+                    // Si no, volver a la posición original
+                    page.style.transform = '';
+                }
+            }
+            
+            function goToNextPage() {
+                if (currentPage < totalPages - 1) {
+                    const currentPageElement = pages[currentPage];
+                    currentPageElement.classList.add('flipped');
+                    setTimeout(() => {
+                        currentPage++;
+                        updatePageStates();
+                    }, 500);
+                }
+            }
+            
+            function goToPrevPage() {
+                if (currentPage > 0) {
+                    currentPage--;
+                    const currentPageElement = pages[currentPage];
+                    currentPageElement.classList.remove('flipped');
+                    updatePageStates();
+                }
+            }
+            
+            function updatePageStates() {
+                // Actualizar estado de los botones
+                prevBtn.disabled = currentPage === 0;
+                nextBtn.disabled = currentPage === totalPages - 1;
+                
+                // Asegurar que las páginas anteriores estén volteadas
+                pages.forEach((page, index) => {
+                    if (index < currentPage) {
+                        page.classList.add('flipped');
+                    } else {
+                        page.classList.remove('flipped');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
